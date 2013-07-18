@@ -60,15 +60,15 @@ public:
         CGImageRelease(cgImage);
         CGContextRelease(cgContext);
         
-        NSDictionary *options = @{CIDetectorAccuracy : CIDetectorAccuracyHigh};
+        NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh
+                                                            forKey:CIDetectorAccuracy];
         CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace
                                                   context:nil
                                                   options:options];
         
         
-        NSDictionary *fOptions = @{CIDetectorImageOrientation : @(1)};
+        NSDictionary *fOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
         NSArray *features = [detector featuresInImage:ciImage options:fOptions];
-//        NSArray *features = [detector featuresInImage:ciImage options:nil];
         
         if([features count]) for (CIFaceFeature *f in features) {
             ofxFace face;
