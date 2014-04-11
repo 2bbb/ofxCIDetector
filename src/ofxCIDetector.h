@@ -88,7 +88,8 @@ public:
             rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:&pix
                                                           pixelsWide:pixels.getWidth()
                                                           pixelsHigh:pixels.getHeight()
-                                                       bitsPerSample:8 samplesPerPixel:3
+                                                       bitsPerSample:8
+                                                     samplesPerPixel:3
                                                             hasAlpha:NO
                                                             isPlanar:NO
                                                       colorSpaceName:NSDeviceRGBColorSpace
@@ -118,19 +119,19 @@ public:
             
             face.hasLeftEyePoint = f.hasLeftEyePosition;
             if(f.hasLeftEyePosition) {
-                ofLogVerbose() << "has left eye : " << f.leftEyePosition.x << ", " << f.rightEyePosition.y;
+                if(isVerbose()) ofLogVerbose() << "has left eye : " << f.leftEyePosition.x << ", " << f.rightEyePosition.y;
                 face.leftEyePoint.set(f.leftEyePosition.x, height - f.leftEyePosition.y);
             }
             
             face.hasRightEyePoint = f.hasRightEyePosition;
             if(f.hasRightEyePosition) {
-                ofLogVerbose() << "has right eye : " << f.rightEyePosition.x << ", " << f.rightEyePosition.y;
+                if(isVerbose()) ofLogVerbose() << "has right eye : " << f.rightEyePosition.x << ", " << f.rightEyePosition.y;
                 face.rightEyePoint.set(f.rightEyePosition.x, height - f.rightEyePosition.y);
             }
             
             face.hasMouthPoint = f.hasMouthPosition;
             if(f.hasMouthPosition) {
-                ofLogVerbose() << "has mouth : " << f.mouthPosition.x << ", " << f.mouthPosition.y;
+                if(isVerbose()) ofLogVerbose() << "has mouth : " << f.mouthPosition.x << ", " << f.mouthPosition.y;
                 face.mouthPoint.set(f.mouthPosition.x, height - f.mouthPosition.y);
             }
             
